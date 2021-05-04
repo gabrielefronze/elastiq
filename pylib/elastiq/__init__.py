@@ -185,7 +185,7 @@ class Elastiq(Daemon):
             pass
           self.cf[sec_name][key] = new_val
           self.logctl.info("Configuration: %s.%s = %s (from file)", sec_name, key, str(new_val))
-        except Exception, e:
+        except Exception as e:
           self.logctl.info("Configuration: %s.%s = %s (default)", sec_name, key, str(val))
 
     return conf_file_ok
@@ -325,7 +325,7 @@ class Elastiq(Daemon):
       except AttributeError:
         self.logctl.debug('Using old boto call for getting reservations')
         res = self.ec2h.get_all_instances()  # boto 2.2.2
-    except Exception, e:
+    except Exception as e:
       self.logctl.error('Cannot get list of EC2 instances (maybe wrong credentials?)')
       return None
 
@@ -534,7 +534,7 @@ class Elastiq(Daemon):
             self.owned_instances.remove(i.id)
             self.logctl.debug('Shutdown via EC2 of %s succeeded' % ipv4)
             success = True
-          except Exception, e:
+          except Exception as e:
             self.logctl.error('Shutdown via EC2 failed for %s' % ipv4)
         else:
           # Dry run

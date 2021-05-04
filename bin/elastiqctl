@@ -37,7 +37,7 @@ try:
       assert False, 'This should not happen: o=%s a=%s' % (o, a)
 
 except GetoptError as e:
-  print 'elastiq: %s' % e
+  print('elastiq: %s' % e)
   sys.exit(1)
 
 if daemondir is None:
@@ -77,11 +77,11 @@ if statefile is None:
   statefile = statefile_default
 
 # Debug
-# print daemondir
-# print pidfile
-# print conffile
-# print logdir
-# print statefile
+# print(daemondir)
+# print(pidfile)
+# print(conffile)
+# print(logdir)
+# print(statefile)
 
 try:
   cmd = args[0]
